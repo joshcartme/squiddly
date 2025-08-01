@@ -33,5 +33,6 @@
   "dependencies": {
     "@webcomponents/custom-elements": "^1.6.0",
     "lit": "^3.3.1"
-  }
+  },
+  "packageManager": "yarn@4.9.2"
 }
