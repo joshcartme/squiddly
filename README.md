@@ -1,6 +1,6 @@
 # squiddly
 
-> A modern browser extension content script example built with Extension.js and TypeScript. Demonstrates how to create type-safe content scripts with clean, maintainable code.
+> Disable the github merge button based on checks or a label.
 
 ## Available Scripts
 
@@ -29,7 +29,3 @@ npm start
 ```bash
 npm build
 ```
-
-## Learn More
-
-To learn more about creating cross-browser extensions with Extension.js, visit the [official documentation](https://extension.js.org).

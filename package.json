@@ -1,12 +1,11 @@
 {
   "private": true,
   "name": "squiddly",
-  "description": "A modern browser extension content script example built with Extension.js and TypeScript. Demonstrates how to create type-safe content scripts with clean, maintainable code.",
+  "description": "Disable the github merge button based on checks or a label.",
   "version": "0.0.1",
   "author": {
-    "name": "Your Name",
-    "email": "your@email.com",
-    "url": "https://yourwebsite.com"
+    "name": "Joshua Cartmell",
+    "url": "https://jo.shcart.me"
   },
   "license": "MIT",
   "devDependencies": {
@@ -16,7 +15,6 @@
     "@babel/preset-env": "^7.28.0",
     "@babel/preset-typescript": "^7.27.1",
     "babel-loader": "^10.0.0",
-    "babel-preset-modern-browser-extension": "^0.7.0",
     "extension": "^2.0.0-rc.38",
     "typescript": "5.3.3"
   },

@@ -3,9 +3,9 @@
   "manifest_version": 3,
   "version": "0.0.1",
   "name": "squiddly",
-  "description": "A modern browser extension content script example built with Extension.js and TypeScript. Demonstrates how to create type-safe content scripts with clean, maintainable code.",
+  "description": "Disable the github merge button based on checks or a label.",
   "icons": {
-    "48": "images/extension_48.png"
+    "48": "images/squiddly_48.png"
   },
   "permissions": [
     "activeTab",
@@ -16,12 +16,6 @@
   "host_permissions": [
     "<all_urls>"
   ],
-  "background": {
-    "chromium:service_worker": "background.ts",
-    "firefox:scripts": [
-      "background.ts"
-    ]
-  },
   "web_accessible_resources": [
     {
       "resources": [
@@ -35,7 +29,7 @@
   "content_scripts": [
     {
       "matches": [
-        "<all_urls>"
+        "https://*.github.com/*"
       ],
       "js": [
         "content/scripts.ts"
@@ -44,10 +38,16 @@
   ],
   "action": {
     "default_popup": "./action/index.html",
-    "default_title": "Extension.js Action Popup",
+    "default_title": "Squiddly",
     "default_icon": {
-      "48": "images/extension_48.png"
+      "48": "images/squiddly_48.png"
     }
   },
-  "author": "Your Name"
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "squiddly@jo.shcart.me",
+      "strict_min_version": "58.0"
+    }
+  },
+  "author": "Joshua Cartmell"
 }
