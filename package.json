@@ -8,6 +8,11 @@
     "url": "https://jo.shcart.me"
   },
   "license": "MIT",
+  "homepage": "https://github.com/npm/example#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshcartme/squiddly.git"
+  },
   "devDependencies": {
     "@babel/core": "^7.28.0",
     "@babel/plugin-proposal-decorators": "^7.28.0",
@@ -16,13 +21,14 @@
     "@babel/preset-typescript": "^7.27.1",
     "babel-loader": "^10.0.0",
     "extension": "^2.0.0-rc.38",
-    "typescript": "5.3.3"
+    "typescript": "^5.3.3"
   },
   "type": "module",
   "scripts": {
     "dev": "extension dev",
     "start": "extension start",
-    "build": "extension build"
+    "build": "extension build",
+    "typecheck": "tsc -b"
   },
   "dependencies": {
     "@webcomponents/custom-elements": "^1.6.0",
