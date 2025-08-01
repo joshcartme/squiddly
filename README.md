@@ -1,12 +1,22 @@
 # squiddly
 
-> Disable the github merge button based on checks or a label.
+Disable the github merge button based on checks or a label.
 
-## Available Scripts
+Configuration:
+
+<img width="572" height="254" alt="Screenshot 2025-07-31 205925" src="https://github.com/user-attachments/assets/72048586-fa9b-4e71-924d-00a722a420ba" />
+
+Result:
+
+<img width="1359" height="536" alt="Screenshot 2025-07-31 210435" src="https://github.com/user-attachments/assets/2b4a5bee-75e4-4348-a3e1-fbc4f2f757be" />
+
+## Development
+
+### Available Scripts
 
 In the project directory, you can run the following scripts:
 
-### npm dev
+#### npm dev
 
 **Development Mode**: This command runs your extension in development mode. It will launch a new browser instance with your extension loaded. The page will automatically reload whenever you make changes to your code, allowing for a smooth development experience.
 
@@ -14,7 +24,7 @@ In the project directory, you can run the following scripts:
 npm dev
 ```
 
-### npm start
+#### npm start
 
 **Production Preview**: This command runs your extension in production mode. It will launch a new browser instance with your extension loaded, simulating the environment and behavior of your extension as it will appear once published.
 
@@ -22,7 +32,7 @@ npm dev
 npm start
 ```
 
-### npm build
+#### npm build
 
 **Build for Production**: This command builds your extension for production. It optimizes and bundles your extension, preparing it for deployment to the target browser's store.
 
