@@ -3,7 +3,7 @@
   "manifest_version": 3,
   "version": "1.0.2",
   "name": "squiddly",
-  "description": "Disable the github merge button based on checks or a label.",
+  "description": "Disable the github merge button based on failing checks or a label.",
   "icons": {
     "48": "images/squiddly_48.png"
   },
