@@ -8,31 +8,30 @@ permissions:
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: 22.x
-        cache: 'yarn'
-    - run: yarn
-    - run: yarn run tsc -b
-    - name: Checks failed
-      if: ${{ failure() && github.event_name == 'pull_request' }}
-      uses: actions/github-script@v7
-      with:
-        script: |
-          github.rest.issues.addLabels({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            labels: ['failed-ci-checks']
-          })
+      - uses: actions/checkout@v4
+      - name: Use Node.js 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: "npm"
+      - run: npm ci
+      - run: npm run typecheck
+      - name: Checks failed
+        if: ${{ failure() && github.event_name == 'pull_request' }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['failed-ci-checks']
+            })

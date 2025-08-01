@@ -25,3 +25,6 @@ yarn-error.log*
 
 # extension.js
 extension-env.d.ts
+
+# typescript build
+*.tsbuildinfo
