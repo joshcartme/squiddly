@@ -1,12 +1,12 @@
 # squiddly
 
-Disable the github merge button based on checks or a label.  This is all client side and could have bugs so this should not be the only thing preventing merging.
+Disable the github merge button based on checks or a configurable label.  This is all client side and could have bugs so this should not be the only thing preventing merging.
 
 ## Configuration:
 
-<img width="572" height="254" alt="Screenshot 2025-07-31 205925" src="https://github.com/user-attachments/assets/72048586-fa9b-4e71-924d-00a722a420ba" />
+<img width="544" height="233" alt="Screenshot 2025-08-03 215146" src="https://github.com/user-attachments/assets/c8bd7dec-ab35-4a77-b620-587f25107450" />
 
-To be clear: "or" means it will disable the merge button if either condition is true.
+To be clear, "or" means it will disable the merge button if either condition is true.
 
 ## failing check[s]
 
@@ -24,9 +24,9 @@ or success:
 
 ## PR has label
 
-<img width="691" height="105" alt="Screenshot 2025-08-03 214049" src="https://github.com/user-attachments/assets/eb8e0220-5e9d-428f-97fd-17dda272b3e9" />
+<img width="542" height="231" alt="Screenshot 2025-08-03 215017" src="https://github.com/user-attachments/assets/3054a41f-59ba-4853-b828-efa624524848" />
 
-
+<img width="1346" height="650" alt="Screenshot 2025-08-03 214740" src="https://github.com/user-attachments/assets/fc2b5bb8-48d9-4902-9c8a-2879e39fa29e" />
 
 ## Development
 
