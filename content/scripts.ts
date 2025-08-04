@@ -1,27 +1,25 @@
-let unmount: () => void;
-
-// if (import.meta.webpackHot) {
-// 	import.meta.webpackHot?.accept();
-// 	import.meta.webpackHot?.dispose(() => unmount?.());
-// }
-
 export const defaultConfig = {
 	blockIfFailingChecks: false,
 	blockIfHasLabel: "",
 };
+// warning to show when finding and checking checks isn't working
+const FAILING_CHECKS_WARNING = "cannot determine if checks are failing";
+const ALL_CHECKS_PASSED_TEXT = "All checks have passed";
+
 const PR_PAGE_REGEX = /\/pull\/\d+$/;
 // const MERGE_SECTION_SELECTOR = ".merge-pr";
 const initialConfig = await chrome.storage.sync.get(defaultConfig);
 
 const styles = `button.squiddly[disabled][aria-label]:hover::after {
-    content: attr(aria-label);
-    position: absolute;
-    left: 100%;
-    background: black;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    z-index: 100;
-    width: 200%;
+	content: attr(aria-label);
+	position: absolute;
+	left: 100%;
+	background: black;
+	color: white;
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+	z-index: 100;
+	width: 200%;
 }`;
 
 class SquiddlyCS {
@@ -50,10 +48,47 @@ class SquiddlyCS {
 		document.head.appendChild(styleElement);
 	}
 
+	getChecksDescriptionElement() {
+		const checksSection = document.querySelector('[aria-label="Checks"]');
+		if (!checksSection) {
+			console.warn(`Checks section not found, ${FAILING_CHECKS_WARNING}`);
+			return;
+		}
+		const ariaDescribedBy = checksSection.getAttribute("aria-describedby");
+		if (!ariaDescribedBy) {
+			console.warn(
+				`aria-describedby not found on checks section, ${FAILING_CHECKS_WARNING}`
+			);
+			return;
+		}
+		const checksDescription = document.getElementById(ariaDescribedBy);
+		if (!checksDescription) {
+			console.warn(
+				`Element with id ${ariaDescribedBy} not found, ${FAILING_CHECKS_WARNING}`
+			);
+			return;
+		}
+		return checksDescription;
+	}
+
 	reasonsToBlockMerge() {
 		const reasons: string[] = [];
-		if (this.config.blockIfFailingChecks && this.hasFailingChecks()) {
-			reasons.push("failing checks");
+		if (this.config.blockIfFailingChecks) {
+			const descriptionElement = this.getChecksDescriptionElement();
+			if (descriptionElement) {
+				if (
+					!descriptionElement.textContent?.includes(
+						ALL_CHECKS_PASSED_TEXT
+					)
+				) {
+					reasons.push(
+						descriptionElement.nextElementSibling?.textContent ||
+							"checks are running or failing"
+					);
+				}
+			} else {
+				reasons.push("unable to determine checks status");
+			}
 		}
 		if (this.config.blockIfHasLabel && this.hasTargetLabel()) {
 			reasons.push(`PR has label "${this.config.blockIfHasLabel}"`);
@@ -92,13 +127,6 @@ class SquiddlyCS {
 			}
 			return acc;
 		}, null);
-	}
-
-	hasFailingChecks() {
-		return (
-			document.querySelectorAll('[aria-label="failing checks"]').length >
-			0
-		);
 	}
 
 	hasTargetLabel() {
