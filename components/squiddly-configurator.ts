@@ -33,7 +33,6 @@ export class SquiddlyConfigurator extends LitElement {
 		}
 	`;
 
-	private port?: chrome.runtime.Port;
 	private _blockIfFailingChecks = false;
 	private _blockIfHasLabel = "";
 

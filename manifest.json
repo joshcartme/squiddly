@@ -1,16 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/chrome-manifest.json",
   "manifest_version": 3,
-  "version": "1.2.0",
+  "version": "1.2.1",
   "name": "squiddly",
   "description": "Disable the github merge button based on failing checks or a label.",
   "icons": {
     "48": "images/squiddly_48.png"
   },
   "permissions": [
-    "activeTab",
-    "scripting",
-    "tabs",
     "storage"
   ],
   "content_scripts": [
