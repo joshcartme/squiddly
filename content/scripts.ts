@@ -13,6 +13,17 @@ const PR_PAGE_REGEX = /\/pull\/\d+$/;
 // const MERGE_SECTION_SELECTOR = ".merge-pr";
 const initialConfig = await chrome.storage.sync.get(defaultConfig);
 
+const styles = `button.squiddly[disabled][aria-label]:hover::after {
+    content: attr(aria-label);
+    position: absolute;
+    left: 100%;
+    background: black;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    z-index: 100;
+    width: 200%;
+}`;
+
 class SquiddlyCS {
 	observer: MutationObserver;
 	onPrPage: boolean = false;
@@ -34,13 +45,20 @@ class SquiddlyCS {
 		if (body) {
 			this.observer.observe(body, { childList: true, subtree: true });
 		}
+		const styleElement = document.createElement("style");
+		styleElement.textContent = styles;
+		document.head.appendChild(styleElement);
 	}
 
-	shouldBlockMerge() {
-		return (
-			(this.config.blockIfFailingChecks && this.hasFailingChecks()) ||
-			(this.config.blockIfHasLabel && this.hasTargetLabel())
-		);
+	reasonsToBlockMerge() {
+		const reasons: string[] = [];
+		if (this.config.blockIfFailingChecks && this.hasFailingChecks()) {
+			reasons.push("failing checks");
+		}
+		if (this.config.blockIfHasLabel && this.hasTargetLabel()) {
+			reasons.push(`PR has label "${this.config.blockIfHasLabel}"`);
+		}
+		return reasons;
 	}
 
 	blockIfAppropriate() {
@@ -49,10 +67,18 @@ class SquiddlyCS {
 			if (!mergeButton) {
 				return;
 			}
-			if (this.shouldBlockMerge()) {
+			mergeButton.classList.add("squiddly");
+			const reasons = this.reasonsToBlockMerge();
+			if (reasons.length > 0) {
 				mergeButton.disabled = true;
+				mergeButton.ariaDisabled = "true";
+				mergeButton.ariaLabel = `Merge button disabled by Squiddly: ${reasons.join(
+					", "
+				)}`;
 			} else {
-				mergeButton.disabled = false;
+				mergeButton.removeAttribute("disabled");
+				mergeButton.ariaDisabled = "false";
+				mergeButton.removeAttribute("ariaLabel");
 			}
 		}
 	}
