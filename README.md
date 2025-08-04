@@ -1,14 +1,32 @@
 # squiddly
 
-Disable the github merge button based on checks or a label.
+Disable the github merge button based on checks or a label.  This is all client side and could have bugs so this should not be the only thing preventing merging.
 
-Configuration:
+## Configuration:
 
 <img width="572" height="254" alt="Screenshot 2025-07-31 205925" src="https://github.com/user-attachments/assets/72048586-fa9b-4e71-924d-00a722a420ba" />
 
-Result:
+To be clear: "or" means it will disable the merge button if either condition is true.
 
-<img width="1359" height="536" alt="Screenshot 2025-07-31 210435" src="https://github.com/user-attachments/assets/2b4a5bee-75e4-4348-a3e1-fbc4f2f757be" />
+## failing check[s]
+
+The merge button will also be disabled while checks are proceeding:
+
+<img width="711" height="328" alt="Screenshot 2025-08-03 213111" src="https://github.com/user-attachments/assets/da05bf51-baa9-46b1-9a93-06c09f3ed62c" />
+
+to failure:
+
+<img width="698" height="329" alt="Screenshot 2025-08-03 213233" src="https://github.com/user-attachments/assets/3f97161d-27db-4679-b4b2-be93316dc96f" />
+
+or success:
+
+<img width="486" height="329" alt="Screenshot 2025-08-03 213128" src="https://github.com/user-attachments/assets/99895426-173d-4d00-b76f-add4736f57b0" />
+
+## PR has label
+
+<img width="691" height="105" alt="Screenshot 2025-08-03 214049" src="https://github.com/user-attachments/assets/eb8e0220-5e9d-428f-97fd-17dda272b3e9" />
+
+
 
 ## Development
 
