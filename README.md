@@ -55,5 +55,5 @@ yarn start
 **Build for Production**: This command builds your extension for production. It optimizes and bundles your extension, preparing it for deployment to the target browser's store.
 
 ```bash
-yarn build
+yarn build --browser=all --zip
 ```
