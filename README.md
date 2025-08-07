@@ -1,6 +1,6 @@
 # squiddly
 
-Disable the github merge button based on checks or a configurable label.  This is all client side and could have bugs so this should not be the only thing preventing merging.
+Disable the github merge button based on checks or a configurable label.  This is all client side and could have bugs so this should not be the only thing preventing merging.  Get it on the [Chrome Web Store](https://chromewebstore.google.com/detail/squiddly/keckkliciafiafmlgeepcgbiohbekjmn).  Available later in Firefox, the review is pending.
 
 ## Configuration:
 
@@ -27,6 +27,8 @@ or success:
 <img width="542" height="231" alt="Screenshot 2025-08-03 215017" src="https://github.com/user-attachments/assets/3054a41f-59ba-4853-b828-efa624524848" />
 
 <img width="1346" height="650" alt="Screenshot 2025-08-03 214740" src="https://github.com/user-attachments/assets/fc2b5bb8-48d9-4902-9c8a-2879e39fa29e" />
+
+Check `.github/workflows/ci-check.yml` for an example Github Action that adds a label if a PR fails typechecking.
 
 ## Development
 
