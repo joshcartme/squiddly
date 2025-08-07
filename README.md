@@ -1,34 +1,22 @@
 # squiddly
 
-Disable the github merge button based on checks or a configurable label.  This is all client side and could have bugs so this should not be the only thing preventing merging.  Get it on the [Chrome Web Store](https://chromewebstore.google.com/detail/squiddly/keckkliciafiafmlgeepcgbiohbekjmn).  Available later in Firefox, the review is pending.
-
-## Configuration:
-
-<img width="544" height="233" alt="Screenshot 2025-08-03 215146" src="https://github.com/user-attachments/assets/c8bd7dec-ab35-4a77-b620-587f25107450" />
-
-To be clear, "or" means it will disable the merge button if either condition is true.
+Disable the github merge button based on checks or a configurable label.  Look at `.github/workflows/ci-check.yml` for an example Github Action that adds a label if a PR fails typechecking.  This is all client side and could have bugs so this should not be the only thing preventing merging.  Get it on the [Chrome Web Store](https://chromewebstore.google.com/detail/squiddly/keckkliciafiafmlgeepcgbiohbekjmn).  Available later in Firefox, the review is pending.
 
 ## failing check[s]
 
-The merge button will also be disabled while checks are proceeding:
 
-<img width="711" height="328" alt="Screenshot 2025-08-03 213111" src="https://github.com/user-attachments/assets/da05bf51-baa9-46b1-9a93-06c09f3ed62c" />
 
-to failure:
+# <img width="544" height="233" alt="Screenshot 2025-08-03 215146" src="https://github.com/user-attachments/assets/c8bd7dec-ab35-4a77-b620-587f25107450" /> &#x21AF;
 
-<img width="698" height="329" alt="Screenshot 2025-08-03 213233" src="https://github.com/user-attachments/assets/3f97161d-27db-4679-b4b2-be93316dc96f" />
-
-or success:
-
-<img width="486" height="329" alt="Screenshot 2025-08-03 213128" src="https://github.com/user-attachments/assets/99895426-173d-4d00-b76f-add4736f57b0" />
+| Disabled while checks are proceeding | Disabled when checks have failed | 
+|--------------------------------------|----------------------------------|
+|<img width="711" height="328" alt="Screenshot 2025-08-03 213111" src="https://github.com/user-attachments/assets/da05bf51-baa9-46b1-9a93-06c09f3ed62c" />|<img width="698" height="329" alt="Screenshot 2025-08-03 213233" src="https://github.com/user-attachments/assets/3f97161d-27db-4679-b4b2-be93316dc96f" />|
 
 ## PR has label
 
-<img width="542" height="231" alt="Screenshot 2025-08-03 215017" src="https://github.com/user-attachments/assets/3054a41f-59ba-4853-b828-efa624524848" />
+# <img width="542" height="231" alt="Screenshot 2025-08-03 215017" src="https://github.com/user-attachments/assets/3054a41f-59ba-4853-b828-efa624524848" /> &#x21AF;
 
 <img width="1346" height="650" alt="Screenshot 2025-08-03 214740" src="https://github.com/user-attachments/assets/fc2b5bb8-48d9-4902-9c8a-2879e39fa29e" />
-
-Check `.github/workflows/ci-check.yml` for an example Github Action that adds a label if a PR fails typechecking.
 
 ## Development
 
