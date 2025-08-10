@@ -1,6 +1,12 @@
 # squiddly
 
-Disable the github merge button based on checks or a configurable label.  Look at `.github/workflows/ci-check.yml` for an example Github Action that adds a label if a PR fails typechecking.  This is all client side and could have bugs so this should not be the only thing preventing merging.  Get it on the [Chrome Web Store](https://chromewebstore.google.com/detail/squiddly/keckkliciafiafmlgeepcgbiohbekjmn).  Available later in Firefox, the review is pending.
+Disable the github merge button based on checks or a configurable label.
+
+Get it for:
+- [Chrome](https://chromewebstore.google.com/detail/squiddly/keckkliciafiafmlgeepcgbiohbekjmn)  
+- [Firefox](https://addons.mozilla.org/en-US/firefox/addon/squiddly/)
+
+Look at `.github/workflows/ci-check.yml` for an example Github Action that adds a label if a PR fails typechecking.  This is all client side and could have bugs so this should not be the only thing preventing merging.
 
 ## failing check[s]
 
