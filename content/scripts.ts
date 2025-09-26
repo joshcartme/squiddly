@@ -121,11 +121,11 @@ class SquiddlyCS {
 	getMergeButton() {
 		return Array.from(
 			document.querySelectorAll("button")
-		).reduce<HTMLButtonElement | null>((acc, b) => {
-			if (b?.textContent?.includes("merge")) {
-				acc = b;
+		).reduce<HTMLButtonElement | null>((mergeButton, button) => {
+			if (button?.textContent?.includes("merge")) {
+				mergeButton = button;
 			}
-			return acc;
+			return mergeButton;
 		}, null);
 	}
 
