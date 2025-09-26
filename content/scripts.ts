@@ -99,7 +99,12 @@ class SquiddlyCS {
 	blockIfAppropriate() {
 		if (this.onPrPage) {
 			const mergeButton = this.getMergeButton();
-			if (!mergeButton) {
+			// don't interfere with the confirm merge button
+			if (
+				!mergeButton ||
+				mergeButton.textContent?.toLowerCase().includes("confirm") ||
+				mergeButton.dataset.inactive === "true"
+			) {
 				return;
 			}
 			mergeButton.classList.add("squiddly");
@@ -121,11 +126,11 @@ class SquiddlyCS {
 	getMergeButton() {
 		return Array.from(
 			document.querySelectorAll("button")
-		).reduce<HTMLButtonElement | null>((acc, b) => {
-			if (b?.textContent?.includes("merge")) {
-				acc = b;
+		).reduce<HTMLButtonElement | null>((mergeButton, button) => {
+			if (button?.textContent?.includes("merge")) {
+				mergeButton = button;
 			}
-			return acc;
+			return mergeButton;
 		}, null);
 	}
 
