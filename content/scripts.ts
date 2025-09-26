@@ -102,7 +102,8 @@ class SquiddlyCS {
 			// don't interfere with the confirm merge button
 			if (
 				!mergeButton ||
-				mergeButton.textContent?.toLowerCase().includes("confirm")
+				mergeButton.textContent?.toLowerCase().includes("confirm") ||
+				mergeButton.dataset.inactive === "true"
 			) {
 				return;
 			}
