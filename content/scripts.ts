@@ -99,7 +99,11 @@ class SquiddlyCS {
 	blockIfAppropriate() {
 		if (this.onPrPage) {
 			const mergeButton = this.getMergeButton();
-			if (!mergeButton) {
+			// don't interfere with the confirm merge button
+			if (
+				!mergeButton ||
+				mergeButton.textContent?.toLowerCase().includes("confirm")
+			) {
 				return;
 			}
 			mergeButton.classList.add("squiddly");
